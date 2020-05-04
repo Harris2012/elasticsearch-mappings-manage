@@ -1,0 +1,53 @@
+<div>
+    <div ng-show="!loaded" class="row">
+        <div class="col-sm-12">
+            <i class="loading"></i>
+        </div>
+    </div>
+    <div ng-show="loaded && item == null" class="row">404</div>
+    <form name="theForm" ng-show="loaded && item != null" novalidate class="form form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">编号</label>
+            <div class="col-sm-8">
+                <p class="form-control-static">{{item.id}}</p>
+            </div>
+        </div>
+        <div ng-class="{'has-error':theForm.name.$dirty&&theForm.name.$error.required}" class="form-group">
+            <label class="col-sm-2 control-label">名称</label>
+            <div class="col-sm-8">
+                <input type="text" name="name" ng-model="item.name" required class="form-control" />
+                <p ng-show="theForm.name.$dirty && theForm.name.$error.required" class="text-danger">必填</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">字段类型</label>
+            <div class="col-sm-8">
+                <div ng-repeat="x in fieldType_selection" class="icheck-primary icheck-inline">
+                    <input type="radio" id="fieldType_{{x.name}}" name="fieldType" ng-value="x" ng-model="$parent.fieldType_current" />
+                    <label for="fieldType_{{x.name}}">{{x.name}}({{x.remark}})</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">备注</label>
+            <div class="col-sm-8">
+                <input type="text" name="remark" ng-model="item.remark" class="form-control" />
+                <p ng-show="theForm.remark.$dirty && theForm.remark.$error.required" class="text-danger">必填</p>
+            </div>
+        </div>
+        <div ng-class="{'has-error':theForm.nullValue.$dirty&&theForm.nullValue.$error.required}" class="form-group">
+            <label class="col-sm-2 control-label">null_value</label>
+            <div class="col-sm-8">
+                <input type="text" name="nullValue" ng-model="item.nullValue" required class="form-control" />
+                <p ng-show="theForm.nullValue.$dirty && theForm.nullValue.$error.required" class="text-danger">必填</p>
+            </div>
+        </div>
+        <div ng-class="{'has-error':theForm.copyTo.$dirty&&theForm.copyTo.$error.required}" class="form-group">
+            <label class="col-sm-2 control-label">copy_to</label>
+            <div class="col-sm-8">
+                <input type="text" name="copyTo" ng-model="item.copyTo" required class="form-control" />
+                <p ng-show="theForm.copyTo.$dirty && theForm.copyTo.$error.required" class="text-danger">必填</p>
+            </div>
+        </div>
+    </form>
+</div>

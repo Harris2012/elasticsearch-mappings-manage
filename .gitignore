@@ -1,0 +1,13 @@
+target/
+/.settings/
+/__ConfigTemp/
+/.vs/
+/bin/
+/obj/
+*.user
+.classpath
+.idea/
+*.iml
+node_modules/
+bower_components/
+.project

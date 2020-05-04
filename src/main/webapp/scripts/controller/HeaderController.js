@@ -1,0 +1,2 @@
+function HeaderController($scope, ElasticsearchManageService) {
+}

@@ -1,0 +1,65 @@
+<div>
+    <div ng-show="!items_loaded" class="form-group">
+        <col-sm-12>
+            <p>
+                <i class="loading"></i>
+                <span>列表加载中，请稍候...</span>
+            </p>
+        </col-sm-12>
+    </div>
+    <div ng-show="items_loaded && items_message != null && items_message.length > 0" class="form-group">
+        <div class="col-sm-12">
+            <p>{{items_message}}</p>
+        </div>
+    </div>
+    <div ng-show="!count_loaded" class="form-group">
+        <div class="col-sm-12">
+            <p>
+                <i class="loading"></i>
+                <span>页码加载中，请稍候...</span>
+            </p>
+        </div>
+    </div>
+    <div ng-show="count_loaded && count_message != null && count_message.length > 0" class="form-group">
+        <div class="col-sm-12">
+            <p>{{count_message}}</p>
+        </div>
+    </div>
+    <table ng-show="items_loaded" class="table table-hover">
+        <thead>
+            <tr>
+                <th>编号</th>
+                <th>名称</th>
+                <th>备注</th>
+                <th>创建时间</th>
+                <th>最后更新时间</th>
+                <th>文档</th>
+                <th>查看</th>
+                <th>编辑</th>
+                <th>删除</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in items">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.remark}}</td>
+                <td>{{item.createTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                <td>{{item.lastUpdateTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                <td>
+                    <a ui-sref="app.layout.default.document-list({clusterId: item.id})">查看</a>
+                </td>
+                <td>
+                    <a ng-click="openItem(item.id)">查看</a>
+                </td>
+                <td>
+                    <a ng-click="openUpdate(item.id)">编辑</a>
+                </td>
+                <td>
+                    <a ng-click="disable(item.id)" href>删除</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <ul max-size="8" items-per-page="15" total-items="totalCount" ng-model="currentPage" ng-change="pageChanged()" class="pagination" previous-text="上一页" next-text="下一页" boundary-link-numbers="true" ng-show="count_loaded" uib-pagination></ul>
+</div>

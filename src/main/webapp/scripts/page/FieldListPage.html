@@ -1,0 +1,14 @@
+<div>
+    <ol class="breadcrumb">
+        <li>
+            <a ui-sref="app.welcome">首页</a>
+        </li>
+        <li class="active">字段列表</li>
+    </ol>
+    <div class="form-group row">
+        <div class="col-lg-12">
+            <button-field-create-dialog success="success" cluster_id="{{clusterId}}" document_id="{{documentId}}"></button-field-create-dialog>
+        </div>
+    </div>
+    <field-simple-table reload="reload" cluster_id="{{clusterId}}" document_id="{{documentId}}"></field-simple-table>
+</div>
