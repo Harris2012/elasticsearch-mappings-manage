@@ -63,7 +63,7 @@ public class GitlabProxy {
 
     private FilesRequest toFilesRequest(String content) {
         FilesRequest filesRequest = new FilesRequest();
-        filesRequest.setAuthorEmail("hc_zhang@live.cn");
+        filesRequest.setAuthorEmail("harriszhang@live.cn");
         filesRequest.setAuthorName("HarrisZhang");
         filesRequest.setBranch("master");
         filesRequest.setContent(content);
